@@ -1,7 +1,10 @@
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
-from .config import Config
+try:
+    from .config import Config
+except ImportError:
+    from config import Config
 
 
 def get_train_transforms():

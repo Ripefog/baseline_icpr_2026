@@ -1,6 +1,9 @@
 import torch.nn as nn
 
-from .fusion import AttentionFusion
+try:
+    from .fusion import AttentionFusion
+except ImportError:
+    from fusion import AttentionFusion
 
 
 class MultiFrameCRNN(nn.Module):

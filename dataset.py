@@ -9,8 +9,12 @@ import torch
 from torch.utils.data import Dataset
 from tqdm import tqdm
 
-from .config import Config
-from .transforms import get_train_transforms, get_val_transforms, get_degradation_transforms
+try:
+    from .config import Config
+    from .transforms import get_train_transforms, get_val_transforms, get_degradation_transforms
+except ImportError:
+    from config import Config
+    from transforms import get_train_transforms, get_val_transforms, get_degradation_transforms
 
 
 class AdvancedMultiFrameDataset(Dataset):
