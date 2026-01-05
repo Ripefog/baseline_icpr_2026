@@ -15,10 +15,17 @@ from torch.utils.data import DataLoader
 from torch.amp import autocast, GradScaler
 from tqdm import tqdm
 
-from lpr_baseline.config import Config
-from lpr_baseline.dataset import AdvancedMultiFrameDataset
-from lpr_baseline.models import MultiFrameCRNN
-from lpr_baseline.utils import seed_everything, decode_predictions
+# Support both running as module and direct script execution
+try:
+    from .config import Config
+    from .dataset import AdvancedMultiFrameDataset
+    from .models import MultiFrameCRNN
+    from .utils import seed_everything, decode_predictions
+except ImportError:
+    from config import Config
+    from dataset import AdvancedMultiFrameDataset
+    from models import MultiFrameCRNN
+    from utils import seed_everything, decode_predictions
 
 
 def train_pipeline():
